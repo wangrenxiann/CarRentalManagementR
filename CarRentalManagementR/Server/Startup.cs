@@ -1,5 +1,7 @@
 using CarRentalManagementR.Server.Data;
+using CarRentalManagementR.Server.IRepository;
 using CarRentalManagementR.Server.Models;
+using CarRentalManagementR.Server.Repository;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -26,6 +28,7 @@ namespace CarRentalManagementR.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+                     
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
@@ -41,8 +44,12 @@ namespace CarRentalManagementR.Server
             services.AddAuthentication()
                 .AddIdentityServerJwt();
 
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            //Using AddTransient<>, the lifetime services are created each time they are requested. This lifetime works best for lightweight, stateless services
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

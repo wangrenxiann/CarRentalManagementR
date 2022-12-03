@@ -9,5 +9,10 @@ namespace CarRentalManagementR.Shared.Domain
    public class Make:BaseDomainModel
     {
         public string Name { get; set; }
+
+        //public static implicit operator Make(Make v)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
