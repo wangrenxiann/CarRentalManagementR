@@ -31,7 +31,7 @@ namespace CarRentalManagementR.Server.Controllers
         public async Task<IActionResult> GetVehicles()
         {
             //return await _context.Makes.ToListAsync();
-            var vehicles = await _unitOfWork.Vehicles.GetAll();
+            var vehicles = await _unitOfWork.Vehicles.GetAll(includes: q => q.Include(x => x.Make).Include(x => x.Model).Include(x => x.Colour));
             return Ok(vehicles);
         }
 
@@ -110,7 +110,7 @@ namespace CarRentalManagementR.Server.Controllers
             if (vehicle == null)
             {
                 return NotFound();
-            }
+            } 
 
             //_context.Makes.Remove(make);
             //await _context.SaveChangesAsync();
