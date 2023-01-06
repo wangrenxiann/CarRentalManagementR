@@ -9,7 +9,7 @@ namespace CarRentalManagementR.Shared.Domain
     public class Vehicle: BaseDomainModel
     {
         public int Year { get; set; }
-
+        
         public string LicensePlateNumber { get; set; }
 
         public int MakeId { get; set; }
@@ -25,6 +25,8 @@ namespace CarRentalManagementR.Shared.Domain
         public virtual Colour Colour { get; set; }
 
         public virtual List<Booking> Bookings { get; set; }
+
+        public double RentalRate { get; set; }
     }
 }
 //The use of virtual keyword defines the navigation property on the current entity. 

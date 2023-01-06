@@ -5,6 +5,14 @@
 
 
 <h3 class="card-title">Car Customers</h3>
+<br />
+<a href="/customers/create" class="btn btn-secondary">
+    <span class="oi oi-plus"></span>
+    Create New Customer
+</a>
+<br />
+<br />
+
 
 @if (Customers == null)
 {
@@ -15,7 +23,10 @@ else
     <table class=" table table-responsive">
         <thead>
             <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
                 <th>Driving License</th>
+                <th>Address</th>
                 <th>Contact Number</th>
                 <th>Email Address</th>
                 <th>Actions</th>
@@ -25,7 +36,12 @@ else
             @foreach (var customer in Customers)
             {
                 <tr>
+                    <td>@customer.FirstName</td>
+                    <td>@customer.LastName</td>
                     <td>@customer.DrivingLicense</td>
+                    <td>@customer.Address</td>
+                    <td>@customer.ContactNumber</td>
+                    <td>@customer.EmailAddress</td>
 
                     <td>
                         <a href=" /customers/view/@customer.Id" class=" btn btn-primary">

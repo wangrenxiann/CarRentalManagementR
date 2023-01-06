@@ -5,7 +5,9 @@ namespace CarRentalManagementR.Shared.Domain
 {
     public class Customer: BaseDomainModel
     {
-      
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public string DrivingLicense { get; set; }
 

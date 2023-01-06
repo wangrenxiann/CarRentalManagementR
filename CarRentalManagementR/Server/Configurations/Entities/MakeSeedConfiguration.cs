@@ -24,6 +24,15 @@ new Make
 },
 new Make
 {
+    Id = 3,
+    Name="F1",
+    DateCreated = DateTime.Now,
+    DateUpdated = DateTime.Now,
+    CreatedBy = "System",
+    UpdatedBy = "System"
+},
+new Make
+{
    Id = 2,
    Name = "Toyota",
    DateCreated = DateTime.Now,

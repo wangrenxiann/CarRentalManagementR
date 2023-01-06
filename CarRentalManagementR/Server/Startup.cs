@@ -47,7 +47,8 @@ namespace CarRentalManagementR.Server
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             //Using AddTransient<>, the lifetime services are created each time they are requested. This lifetime works best for lightweight, stateless services
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddNewtonsoftJson(op => op.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore); ;
             services.AddRazorPages();
 
         }
