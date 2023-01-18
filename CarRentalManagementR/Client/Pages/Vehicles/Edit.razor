@@ -1,0 +1,23 @@
+﻿@page  "/vehicles/edit/{id:int}"
+@inject HttpClient _client
+@inject NavigationManager _navManager
+
+<h3>Edit Vehicle</h3>
+
+<FormComponent ButtonText="Update" OnValidSubmit="EditVehicle" vehicle="vehicle" />
+
+@code {
+    [Parameter] public int id { get; set; }//This is to set the parameter required at the @page directive /models/edit/{id:int}.
+    Vehicle vehicle = new Vehicle();//This is the model object used by the form component. The form component will be added later.
+
+    protected async override Task OnParametersSetAsync()
+    {
+        vehicle = await _client.GetFromJsonAsync<Vehicle>($"{Endpoints.VehiclesEndpoint}/{id}");
+    }
+
+    async Task EditVehicle()
+    {
+        await _client.PutAsJsonAsync($"{Endpoints.VehiclesEndpoint}/{id}", vehicle);
+        _navManager.NavigateTo("/vehicles/");
+    }
+}
